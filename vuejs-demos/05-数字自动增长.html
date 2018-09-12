@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="number" v-model="number">
+    <!-- <button onclick="handleIncrement()">点击+1</button> -->
+    <!-- 如果函数语句简单可以直接内联写 -->
+    <!-- <button v-on:click="number++">点击+1</button> -->
+    <!-- 如果函数语句比较多，建议把处理写到 JavaScript 中 -->
+    <button v-on:click="handleIncrement">点击+1</button>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    // Document.get('dsa').on('cli')
+    const app = new Vue({
+      el: '#app',
+      data: {
+        number: 1
+      },
+      // 注意：方法写到 data 中可以，但是函数内部的 this 是 Window
+      // 所以我们都建议把方法写到 methods 选项中
+      methods: {
+        handleIncrement: function () {
+          // console.log(app.number)
+          // 在通过 v-on 注册的方法中我们可以直接通过 this 来访问 data 中的数据成员
+          this.number++
+        }
+      }
+    })
+
+    // function handleIncrement() {
+    //   // console.log('111') 
+    //   app.number++
+    // }
+  </script>
+</body>
+
+</html>

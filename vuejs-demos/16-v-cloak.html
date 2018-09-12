@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue-</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    在 Vue 中如何解决表达式闪烁的问题。
+      v-text
+      v-cloak 
+    浏览器在解析的过程中，发现具有 v-cloak 的属性隐藏不显示，所以你就看不见这个 {{}} 闪烁的问题了
+    当 Vue 解析替换完之后，Vue 会自动把 v-cload 样式移除
+   -->
+  <div id="app" v-cloak>
+    <!-- 
+      由于 {{}} 使用的比较多，如果都使用 v-text 又比较麻烦，所以 Vue 提供了一个指令 v-cloak
+     -->
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      data: {
+        message: 'Hello Vue.js!'
+      },
+      methods: {}
+    }).$mount('#app')
+  </script>
+</body>
+</html>

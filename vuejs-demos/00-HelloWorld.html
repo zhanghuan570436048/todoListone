@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ 1 + 1 }}</h1>
+    <h1>{{ 'hello' + 'world' }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+  </div>
+  <!-- 
+    0. npm install vue
+    1. 引包
+    2. new Vue 得到 Vue 实例
+       Vue 暂且可以理解为一个高级的模板引擎
+   -->
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    // 得到 Vue 实例
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue.js!'
+      }
+    })
+  </script>
+</body>
+</html>

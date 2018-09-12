@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    姓氏：<input type="text" value="李" id="firstname">
+    <br>
+    名字：<input type="text" value="鹏周" id="lastname">
+    <br>
+    <p id="fullname">李鹏周</p>
+  </div>
+  <script>
+    var firstname = document.getElementById('firstname')
+    var lastname = document.getElementById('lastname')
+    var fullname = document.getElementById('fullname')
+
+    firstname.addEventListener('input', handleTextInput)
+    lastname.addEventListener('input', handleTextInput)
+
+    function handleTextInput() {
+      fullname.innerHTML = firstname.value + lastname.value
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-once>{{ foo }}</h1>
+    <p>{{ foo }}</p>
+    <span>{{ foo }}</span>
+    <!-- 不能这样使用 -->
+    <!-- <h2 title="{{ foo }}"></h2> -->
+
+    <!-- 转义输出 -->
+    <div>
+      {{ rawHtml }}
+    </div>
+
+    <!-- 渲染 HTML -->
+    <div v-html="rawHtml"></div>
+
+    <hr>
+    <ul>
+      <li v-for="item in todos">
+        <!-- <a href="/todos?id={{ item.id }}">{{ item.title }} </a> -->
+        
+        <!-- 
+          v-bind 只能用于属性
+          它的值是一个 JavaScript 表达式，和 {{}} 里面的语法一直
+          唯一的区别就是：{{}} 用于标签文本绑定，v-bind 用于标签属性绑定
+         -->
+        <!-- <a v-bind:href="'/toods?id=' + item.id">/toods?id={{item.id}}</a> -->
+        <!-- <a v-bind:href="'/toods?id=' + item.id">{{ '/toods?id=' + item.id }}</a> -->
+        <a v-bind:href="true ? 123 : 456">{{ true ? 123 : 456 }}</a>
+      </li>
+    </ul>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        foo: 'hello',
+        bar: 'world',
+        // 在 HTML 字符串中不能使用 Vue 的语法特性
+        rawHtml: '<h1>hello {{ bar }}</h1>',
+        todos: [
+          {
+            id: 1,
+            title: 'aaa'
+          },
+          {
+            id: 2,
+            title: 'bbb'
+          },
+          {
+            id: 3,
+            title: 'ccc'
+          },
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

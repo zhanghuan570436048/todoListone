@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <input type="text" :value="message">
+    <br>
+    <input type="text" v-model="message">
+    <textarea cols="30" rows="10" v-model="message"></textarea>
+    <hr><hr><hr>
+    <div>
+      <!-- 不能这么使用 -->
+      <!-- <h1 v-model="message"></h1> -->
+      <input type="checkbox" :checked="seen">
+      <input type="checkbox" v-model="seen">
+      <br>
+      <div v-if="seen" class="box"></div>
+    </div>
+    <input type="number" v-model.number="number">
+    <button @click="handleClick">点击获取 number</button>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello',
+        seen: true,
+        number: 10
+      },
+      methods: {
+        handleClick () {
+          console.log(this.number + 1)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+   -->
+  <div id="app">
+    <h1>{{ 1 + 1 }}</h1>
+    <h1>{{ 'hello' + 'world' }}</h1>
+    <h1>{{ foo }}</h1>
+    <h1>{{ foo }}</h1>
+    <p>{{ foo }}</p>
+    <div>
+      {{ foo }}
+    </div>
+    <h4>{{ foo }}</h4>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    // 得到 Vue 实例
+    const app = new Vue({
+      el: '#app', // el 选项的作用就是告诉 Vue 管理模板的入口节点，也就是现在的 div#app 的节点（包括所有孩子）都被 Vue 给统治起来了，这样的话我就可以在被 Vue 管理的模板中使用 Vue 提供的特殊的模板引擎语法
+      // data 中的数据不是一般数据
+      // 这种数据被称之为：响应式数据
+      // 什么是叫响应式数据？数据驱动视图，当数据发生改变，那么所有绑定该数据的 DOM 都会跟着改变（MVVM）
+      data: {
+        foo: 'bar'
+      }
+    })
+  </script>
+</body>
+</html>

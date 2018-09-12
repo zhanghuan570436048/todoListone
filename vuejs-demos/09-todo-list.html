@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .done {
+      text-decoration: line-through;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Todo</h1>
+    <p>{{ todos.filter(item => !item.done).length }} of {{ todos.length }} remaning [archive]</p>
+    <p v-for="(item, index) in todos">
+      <!-- 
+        checkbox 双向绑定了 item.done
+        当 checkbox 改变的时候，会影响数据 item.done 也跟着改变
+        当 item.done 变了，会影响所有使用了这个 item.done 的绑定
+       -->
+      <input type="checkbox" v-model="item.done">
+      <!-- 
+        v-bind 可以用来动态绑定属性值
+        class 给了一个对象：
+          对象的 key 就是类名
+          对象的 value 是布尔值
+
+          当布尔值为 true 的时候，作用这个 key 样式
+          当布尔值为 false 的时候，去除这个 key 样式
+       -->
+      <span v-bind:class="{done: item.done}">{{ item.title }}</span>
+      <button @click="handleRemoveTodoClick(index)">X</button>
+    </p>
+    <input type="text" v-model="todoText" @keydown.enter="handleAddTodoClick">
+    <button @click="handleAddTodoClick">Add</button>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const todos = [
+      {
+        id: 1,
+        title: '吃饭',
+        done: true
+      },
+      {
+        id: 2,
+        title: '睡觉',
+        done: false
+      },
+      {
+        id: 3,
+        title: '写代码',
+        done: true
+      },
+    ]
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todos,
+        todoText: ''
+      },
+      methods: {
+        handleAddTodoClick () {
+          // 得到 文本框的内容
+          // 把内容 push 到 todos 中
+          const todoText = this.todoText.trim()
+
+          // 非空校验
+          if (!todoText.length) {
+            return
+          }
+
+          const todos = this.todos
+
+          // 数据驱动视图，数据改变，视图改变
+          todos.push({
+            id: todos[todos.length - 1].id + 1,
+            title: todoText,
+            done: false
+          })
+
+          // 添加 todo 完成，清空文本框
+          // 数据驱动视图，数据改变，视图变化
+          this.todoText = ''
+        },
+
+        handleRemoveTodoClick (index) {
+          this.todos.splice(index, 1)
+        }
+      }
+    })
+
+
+  </script>
+</body>
+</html>

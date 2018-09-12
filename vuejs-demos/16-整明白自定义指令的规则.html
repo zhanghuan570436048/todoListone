@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue-</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="seen">
+    <h1 v-if="seen" v-demo>
+      <span>{{ message }}</span>
+    </h1>
+
+    <input type="text" v-model="message">
+
+    <hr>
+
+    <div>
+      <h4>{{ foo }}</h4>
+      <input type="text" v-model="foo">
+    </div>
+
+    <!-- <input type="text" v-model="message"> -->
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    Vue.directive('demo', {
+      // bind 和 inserted 都会先自动执行一次，bind 先，inserted 随后，注意：只执行一次，以后再也不会调用
+      // 两种的区别就是：
+      //    bind 拿不到父元素
+      //    inserted 可以拿到父元素
+      bind(el, binding) {
+        console.log('bind', el.parentNode) // null
+        el.timer = setInterval(function () {
+          console.log(1)
+        }, 1000)
+      },
+      inserted: function (el) {
+        console.log('inserted', el.parentNode) // <div id="app">...</div>
+      },
+      // update 和 componentUpdated 两者几乎一样，都是当作用该指令的模板发生更新的时候会触发调用
+      // 说白了就是指令所处的被 Vue 管理的模板
+      // 
+      update(el, binding) {
+        console.log('update', el.innerHTML) // 'Hello Vue.js!'
+      },
+      componentUpdated(el, binding) {
+        console.log('componentUpdated', el.innerHTML) // 'Hello'
+      },
+      unbind(el, binding) {
+        // 在这里可以做一些收尾工作
+        window.clearInterval(el.timer)
+        console.log('unbind')
+      }
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        seen: true,
+        message: 'Hello Vue.js!',
+        foo: 'bar'
+      }
+    })
+  </script>
+</body>
+
+</html>

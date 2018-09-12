@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <button v-on:click="handleClick">点我</button>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      // el: document.getElementById('app')
+      // el: '#app',
+      // 视图中绑定的成员必须显式的初始化到 data 中
+      data: {
+        message: 'hello'
+      },
+      methods: {
+        // 注意：不要使用箭头函数
+        // handleClick: function () {
+        //   window.alert(this.message)
+        // },
+
+        // 推荐使用 EcmaScript 6 的对象属性函数简写方式
+        handleClick () {
+          window.alert(this.message)
+        }
+      }
+      // methods:
+    }).$mount('#app') // 这种方式具有明显的动作意图
+
+    // 只能修改，不能动态添加
+    app.$data.message = 'haha'
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="number">
+    <select v-model="operation">
+      <option value="0">+</option>
+      <option value="1">-</option>
+      <option value="2">*</option>
+      <option value="3">/</option>
+    </select>
+    <input type="number">
+    <button>=</button> <strong>0</strong>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        operation: '3'
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue-</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 
+      浏览器在渲染的过程中不认识 {{ message }} 所以直接显示了
+     -->
+    <!-- <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1>
+    <h1>{{ message }}</h1> -->
+    <hr>
+
+    <!-- 
+      v-text 指定解决 {{}} 表达式闪烁的问题
+     -->
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+    <h1 v-text="message"></h1>
+
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      data: {
+        message: 'Hello Vue.js!'
+      },
+      methods: {}
+    }).$mount('#app')
+  </script>
+</body>
+</html>

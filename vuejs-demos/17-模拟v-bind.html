@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue-</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-my-bind:title="message" v-my-bind:foo="message">{{ message }}</h1>
+    <input type="text" v-model="message">
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    // v-bind 作用
+    // 动态绑定属性值
+    // Vue.directive('my-bind', {
+    //   bind (el, binding) {
+    //     console.log(binding.value)
+    //     el.setAttribute(binding.arg, binding.value)
+    //   },
+    //   update (el, binding) {
+    //     el.setAttribute(binding.arg, binding.value)
+    //   }
+    // })
+
+    // 很多时候，我们都会在 bind 和 update 中执行相同的代码
+    // 所我们可以使用简写的方式,.直接给一个函数，该函数会被作为 bind 和 update 的时候执行的函数
+    Vue.directive('my-bind', function (el, binding) {
+      el.setAttribute(binding.arg, binding.value)
+    })
+
+
+    const app = new Vue({
+      data: {
+        message: 'Hello Vue.js!'
+      },
+      methods: {}
+    }).$mount('#app')
+  </script>
+</body>
+</html>

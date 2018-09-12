@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue-</title>
+  <style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+  }
+  </style>
+  <!-- 
+    因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+    结论：文档说的没错。
+   -->
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <h2>v-if</h2>
+      <input type="checkbox" v-model="ifSeen">
+      <!-- 
+    v-if 会根据条件进行渲染和不渲染
+    true 渲染 DOM
+    false 不渲染 DOM
+   -->
+      <div class="box" v-if="ifSeen">
+      </div>
+    </div>
+    <hr>
+    <div>
+      <h2>v-show</h2>
+      <input type="checkbox" v-model="showSeen">
+      <!-- 
+    v-if 会根据条件进行渲染和不渲染
+    true 渲染 DOM
+    false 不渲染 DOM
+   -->
+      <div class="box" v-show="showSeen">
+      </div>
+    </div>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+  const app = new Vue({
+    data: {
+      message: 'Hello Vue.js!',
+      ifSeen: true,
+      showSeen: true
+    },
+    methods: {}
+  }).$mount('#app')
+  </script>
+</body>
+
+</html>

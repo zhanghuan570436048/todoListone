@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 
+      v-if 条件渲染
+      v-for 列表渲染
+      v-on 注册事件
+      v-bind 属性绑定
+      v-once 只绑定一次
+      v-html 绑定输出 HTML
+     -->
+    <p v-if="seen">你看不见我</p>
+    <input type="text" v-bind:placeholder="tip">
+
+    <!-- 
+      阻止默认事件行为绑定 handleGoBaiduClick 方法
+     -->
+    <a v-on:click.prevent="handleGoBaiduClick" href="http://www.baidu.com/">去百度</a>
+
+    <!-- 
+      onclick click
+      onfocus focus
+      onblur blur
+     -->
+    <input type="text" v-on:focus="handleInputFocus">
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        seen: true,
+        tip: '请输入用户名'
+      },
+      methods: {
+        handleInputFocus () {
+          window.alert(this.tip)
+        },
+
+        handleGoBaiduClick (e) {
+          window.alert('去百度')
+          // e.preventDefault()
+        }
+      }
+    })
+  </script>
+</body>
+</html>

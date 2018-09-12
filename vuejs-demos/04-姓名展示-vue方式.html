@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    姓氏：<input type="text" value="李" v-model="firstname">
+    <br>
+    名字：<input type="text" value="鹏周" v-model="lastname">
+    <br>
+    <p>{{ firstname + lastname }}</p>
+    <p>{{ lastname }}</p>
+  </div>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script>
+    // jQuery 提高了 DOM 操作的效率
+    // Vue 极大的解放了 DOM 操作
+    //    （Vue 全部把 DOM 操作都给你屏蔽了）
+    // Vue 的核心思想就是：数据驱动视图
+    new Vue({
+      el: '#app',
+      data: {
+        firstname: '',
+        lastname: ''
+      }
+    })
+  </script>
+</body>
+</html>
